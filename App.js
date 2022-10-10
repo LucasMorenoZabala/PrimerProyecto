@@ -79,10 +79,10 @@ const App: () => Node = () => {
             LucasMorenoZabala <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.
           </Section>
-          <Section title="See Your Changes">
+          <Section title="Hola Andrés">
             <ReloadInstructions />
           </Section>
-          <Section title="Debug">
+          <Section title="Android me gusta">
             <DebugInstructions />
           </Section>
           <Section title="Learn More">
