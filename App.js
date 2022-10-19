@@ -1,120 +1,63 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, {useState} from "react";
+import { Text,Image,TextInput, View } from "react-native";
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+ /*function ShowName(){
+  return();
+ }*/
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+
+
+
+const Human = (props) => {
+  return(
+    <View>
+      <Text>Hola, soy {props.nombre}</Text>
     </View>
-  );
-};
+  )
+}
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+const [name, setName] = useState(null);
+ 
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+//Esto es el MAIN
+export default function App(){
+  const nombre ="Lucas";
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+
+  return(
+    <View>
+      <Text>Hola, me llamo Andres la gordita</Text>
+      <TextInput style={{
+        height: 45,
+        borderColor: 'black',
+        borderWidth: 1
+      }}
+      defaultValue = "Escribe tu nombre aquí!"
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            LucasMorenoZabala <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="Hola Andrés">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Android me gusta">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+  
+    </View>
+  )
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+  //Esto es como un metodo              //variable
+                       const metodoNombre = (nombre2,apellido) => {
+    return nombre2 + " " + apellido;
 
-export default App;
+  }
+
+
+
+
+
+
+//A partir de aqui se pinta por pantalla
+  return(<Text>Hola {metodoNombre("Lucas","Moreno Zabala")}</Text>);
+
+  
+ 
+  
+}
+
 
 
 
