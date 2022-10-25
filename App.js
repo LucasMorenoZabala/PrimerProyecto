@@ -1,76 +1,96 @@
-import React, {useState} from "react";
-import {Button, Text,Image,TextInput, View } from "react-native";
-
-
- /*function ShowName(){
-  return();
- }*/
+import React, { useState } from "react";
+import { Button, Text, Image, TextInput, View, StyleSheet } from "react-native";
 
 
 
 
-const Human = (props) => {
-  return(
-    <View>
-      <Text>Hola, soy {props.nombre}</Text>
-    </View>
-  )
-}
 
-// sirve para setear una variable
-//const [name, setName] = useState(null);
- 
+
+
+const estilos = StyleSheet.create({
+
+  container: {
+    marginTop: 50,
+    backgroundColor: 'white'
+  },
+
+  verde: {
+    color: 'green',
+    fontWeight: 'bold',
+    fontSize: 30
+  },
+
+  rojo: {
+    color: 'red'
+  },
+
+  azul: {
+    color: 'blue'
+  }
+
+
+
+})
 
 //Esto es el MAIN
-export default function App(){
-  const nombre ="Lucas";
+export default function App() {
+
+  const nombre = "Lucas";
+  const apellidos = "Moreno Zabala"
+  const [edad, setEdad] = useState(0);
+  const [anos, setanos] = useState(null);
+  const [color2,setcolor]= useState('brown');
 
 
- /* return(
-    <View>
-      <Text>Hola, me llamo Andres la gordita</Text>
-      <TextInput style={{
-        height: 45,
-        borderColor: 'black',
-        borderWidth: 1
-      }}
-      defaultValue = "Escribe tu nombre aquí!"
+
+  return (
+    <View style={estilos.container}>
+      <Text>Hola mi nombre es <Text style={{ color: 'blue' }}>{nombre}</Text>
+        <Text style={{ color: 'blue' }}>{apellidos}</Text></Text>
+
+
+      <Text>Escriba aquí su edad</Text>
+      <TextInput
+        defaultValue=""
+        placeholder="Edad"
+        onChangeText={edad => setEdad(edad)}
       />
-  
-    </View>
-  )
-
-  //Esto es como un metodo              //variable
-                       const metodoNombre = (nombre2,apellido) => {
-    return nombre2 + " " + apellido;
-
-  }*/
 
 
-  const [contar, setContar] = useState(0);
-  return(
-    <View>
       <Button
-        onPress = {() => 
-        setContar(contar+1)
-        
-        }
-        title={"Contador"}
+        onPress={anos => setanos(decirEdad())}
+        title={"FINALIZAR"}
+
       />
-      <Text>Cada vez que pulso sumo 1 y llevo: {contar}</Text>
+      <Text style={{ color: color2 }} >{anos}</Text>
+      <Text>Gracias por rellenar el formulario</Text>
+
     </View>
+
+
   )
 
 
+  function decirEdad() {
+    if (edad < 18) {
+      setcolor('blue')
+      return ('¡Qué jóven eres!' )
+    } else if (edad < 19) {
+      setcolor('red')
+      return ('¡Qué buena edad!')
+    } else {
+      setcolor('green')
+      return ('¡Pedazo de edad!')
+    }
+  }
 
 
-//A partir de aqui se pinta por pantalla
-  return(<Text>Hola {metodoNombre("Lucas","Moreno Zabala")}</Text>);
-
-  
- 
-  
 }
+
+
+
+
+
 
 
 
