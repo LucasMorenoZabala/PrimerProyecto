@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Text,Image,TextInput, View } from "react-native";
+import {Button, Text,Image,TextInput, View } from "react-native";
 
 
  /*function ShowName(){
@@ -17,7 +17,8 @@ const Human = (props) => {
   )
 }
 
-const [name, setName] = useState(null);
+// sirve para setear una variable
+//const [name, setName] = useState(null);
  
 
 //Esto es el MAIN
@@ -25,7 +26,7 @@ export default function App(){
   const nombre ="Lucas";
 
 
-  return(
+ /* return(
     <View>
       <Text>Hola, me llamo Andres la gordita</Text>
       <TextInput style={{
@@ -43,9 +44,22 @@ export default function App(){
                        const metodoNombre = (nombre2,apellido) => {
     return nombre2 + " " + apellido;
 
-  }
+  }*/
 
 
+  const [contar, setContar] = useState(0);
+  return(
+    <View>
+      <Button
+        onPress = {() => 
+        setContar(contar+1)
+        
+        }
+        title={"Contador"}
+      />
+      <Text>Cada vez que pulso sumo 1 y llevo: {contar}</Text>
+    </View>
+  )
 
 
 
