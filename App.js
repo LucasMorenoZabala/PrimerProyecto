@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { Button, Text, Image, TextInput, View, StyleSheet } from "react-native";
-
-
-
+import { Button, Text, Image, TextInput, View, StyleSheet, Aler } from "react-native";
 
 
 
@@ -39,14 +36,14 @@ export default function App() {
   const apellidos = "Moreno Zabala"
   const [edad, setEdad] = useState(0);
   const [anos, setanos] = useState(null);
-  const [color2,setcolor]= useState('brown');
+  const [color2,setcolor]= useState(null);
 
 
 
   return (
     <View style={estilos.container}>
       <Text>Hola mi nombre es <Text style={{ color: 'blue' }}>{nombre}</Text>
-        <Text style={{ color: 'blue' }}>{apellidos}</Text></Text>
+        <Text style={{ color: 'blue' }}> {apellidos}</Text></Text>
 
 
       <Text>Escriba aquí su edad</Text>
@@ -62,7 +59,7 @@ export default function App() {
         title={"FINALIZAR"}
 
       />
-      <Text style={{ color: color2 }} >{anos}</Text>
+      <Text style={{color: color2 }} >{anos}</Text>
       <Text>Gracias por rellenar el formulario</Text>
 
     </View>
