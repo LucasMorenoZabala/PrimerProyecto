@@ -1,94 +1,74 @@
-import React, { useState } from "react";
-import { Button, Text, Image, TextInput, View, StyleSheet, Aler } from "react-native";
-
-
-
-
-const estilos = StyleSheet.create({
-
-  container: {
-    marginTop: 50,
-    backgroundColor: 'white'
-  },
-
-  verde: {
-    color: 'green',
-    fontWeight: 'bold',
-    fontSize: 30
-  },
-
-  rojo: {
-    color: 'red'
-  },
-
-  azul: {
-    color: 'blue'
-  }
-
-
-
-})
+import React, {useState} from 'react';
+import {Button, Text, TextInput, View, StyleSheet} from 'react-native';
 
 //Esto es el MAIN
 export default function App() {
-
-  const nombre = "Lucas";
-  const apellidos = "Moreno Zabala"
+  const nombre = 'Lucas';
+  const apellidos = 'Moreno Zabala';
   const [edad, setEdad] = useState(0);
-  const [anos, setanos] = useState(null);
-  const [color2,setcolor]= useState(null);
-
-
+  const [texto, setTexto] = useState(null);
+  const [color, setColor] = useState(null);
 
   return (
     <View style={estilos.container}>
-      <Text>Hola mi nombre es <Text style={{ color: 'blue' }}>{nombre}</Text>
-        <Text style={{ color: 'blue' }}> {apellidos}</Text></Text>
-
+      <Text>
+        Hola mi nombre es <Text style={{color: 'blue'}}>{nombre}</Text>
+        <Text style={{color: 'blue'}}> {apellidos}</Text>
+      </Text>
 
       <Text>Escriba aquí su edad</Text>
       <TextInput
         defaultValue=""
         placeholder="Edad"
-        onChangeText={edad => setEdad(edad)}
+        onChangeText={edad => validateEdad(edad)}
       />
 
-
-      <Button
-        onPress={anos => setanos(decirEdad())}
-        title={"FINALIZAR"}
-
-      />
-      <Text style={{color: color2 }} >{anos}</Text>
+      <Button onPress={decirEdad} title={'FINALIZAR'} />
+      <Text style={{color: color}}>{texto}</Text>
       <Text>Gracias por rellenar el formulario</Text>
-
     </View>
-
-
-  )
-
+  );
 
   function decirEdad() {
     if (edad < 18) {
-      setcolor('blue')
-      return ('¡Qué jóven eres!' )
+      setTexto('Qué jóven eres');
+      setColor('blue');
     } else if (edad < 19) {
-      setcolor('red')
-      return ('¡Qué buena edad!')
+      setTexto('Qué buena edad');
+      setColor('red');
     } else {
-      setcolor('green')
-      return ('¡Pedazo de edad!')
+      setTexto('Estás en la pubertad');
+      setColor('green');
     }
   }
-
-
 }
 
+const validateEdad = texto => {
+  const reg = /^[0-9]+$/;
+  if (reg.test(texto)) {
+    console.log('Soy un número');
+  } else {
+    console.log('Soy una letra');
+  }
+};
 
+const estilos = StyleSheet.create({
+  container: {
+    marginTop: 50,
+    backgroundColor: 'white',
+  },
 
+  verde: {
+    color: 'green',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
 
+  rojo: {
+    color: 'red',
+  },
 
-
-
-
-
+  azul: {
+    color: 'blue',
+  },
+});
