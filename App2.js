@@ -1,10 +1,11 @@
-import React from 'react'
-import { Image,ScrollView } from 'react-native'
+import React, { useState } from 'react'
+import { Image,ScrollView, Switch, View } from 'react-native'
 import img from './img/Cerdo-vietnamita-Animales-Faunia-5.jpg'
 
 
-export default function image(){
 
+export default function image(){
+    const [isEnabled, setIsEnabled] = useState(false);
 return(
    
    <ScrollView>
@@ -18,13 +19,28 @@ return(
 
     />
 
-    <Image
-        style = {{width: 500, height: 500}}
-        source ={img}
-
-    />
-    </ScrollView>
     
-);
+    
+    
+<Switch
 
-} 
+    trackColor={{false:'black',true:'green'}}
+    thumbColor={isEnabled ? 'skyblue' : 'pink'}
+    onValueChange = {() => setIsEnabled(previousState => !previousState)}
+    value ={isEnabled}
+/>
+{isEnabled ? <Image
+        style = {{width: 500, height: 500}}
+        source ={img}/> : null }
+
+</ScrollView>
+    
+)
+
+}
+
+/*export default function cambiante(){
+
+}*/
+
+
