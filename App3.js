@@ -82,6 +82,11 @@ value ={isEnabled}
 
 function decirDatos(nombre,apellidos,edad,correo) {
 
+
+    const displayON = "null";
+    if(displayON){
+        mi nombre es {nombre}...
+    }
    
 setTexto({nombre});
 setTexto({apellidos});
