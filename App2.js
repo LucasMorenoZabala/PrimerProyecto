@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image,ScrollView, Switch, View } from 'react-native'
+import { Image,ScrollView, Switch } from 'react-native'
 import img from './img/Cerdo-vietnamita-Animales-Faunia-5.jpg'
 
 
@@ -19,9 +19,6 @@ return(
 
     />
 
-    
-    
-    
 <Switch
 
     trackColor={{false:'black',true:'green'}}
