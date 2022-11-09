@@ -39,8 +39,6 @@ return(
 
 }
 
-/*export default function cambiante(){
 
-}*/
 
 
