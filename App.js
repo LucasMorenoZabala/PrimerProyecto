@@ -8,7 +8,6 @@ export default function App() {
   const [edad, setEdad] = useState(0);
   const [texto, setTexto] = useState(null);
   const [color, setColor] = useState(null);
-  
 
   return (
     <View style={estilos.container}>
@@ -40,7 +39,6 @@ export default function App() {
     } else {
       setTexto('Estás en la pubertad');
       setColor('green');
-      
     }
   }
 }
@@ -49,14 +47,10 @@ const validateEdad = texto => {
   const reg = /^[0-9]+$/;
   if (reg.test(texto)) {
     console.log('Soy un número');
-
   } else {
     console.log('Soy una letra');
-   
   }
 };
-
-
 
 const estilos = StyleSheet.create({
   container: {
