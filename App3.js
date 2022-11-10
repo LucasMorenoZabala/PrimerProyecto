@@ -33,39 +33,57 @@ export default function ApplicationForm() {
 
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <TextInput
-          defaultValue=""
-          placeholder="Nombre"
-          keyboardType="generic"
-          onChangeText={nombre => setNombre(nombre)}
-        />
-        <TextInput
-          defaultValue=""
-          placeholder="Apellidos"
-          keyboardType="generic"
-          onChangeText={apellidos => setApellidos(apellidos)}
-        />
-        <TextInput
-          defaultValue=""
-          placeholder="Edad"
-          keyboardType="numeric"
-          onChangeText={edad => setEdad(edad)}
-        />
-        <TextInput
-          defaultValue=""
-          placeholder="Correo Electrónico"
-          keyboardType="email-address"
-          onChangeText={correo => setCorreo(correo)}
-        />
+      <View>
+        <View style={{flexDirection: 'row', margin: 20}}>
+          <Text style={{fontSize: 35, color: 'brown'}}>Nombre: </Text>
+          <TextInput
+            style={{borderWidth: 2}}
+            defaultValue=""
+            keyboardType="generic"
+            onChangeText={nombre => setNombre(nombre)}
+          />
+        </View>
 
-        <Switch
-          style={styles.switch}
-          trackColor={{false: 'skyblue', true: 'pink'}}
-          thumbColor={isEnabled ? 'pink' : 'skyblue'}
-          onValueChange={() => setIsEnabled(previousState => !previousState)}
-          value={isEnabled}
-        />
+        <View style={{flexDirection: 'row', margin: 20}}>
+          <Text style={{fontSize: 35, color: 'brown'}}>Apellidos: </Text>
+          <TextInput
+            style={{borderWidth: 2}}
+            defaultValue=""
+            keyboardType="generic"
+            onChangeText={nombre => setNombre(nombre)}
+          />
+        </View>
+
+        <View style={{flexDirection: 'row', margin: 20}}>
+          <Text style={{fontSize: 35, color: 'brown'}}>Edad: </Text>
+          <TextInput
+            style={{borderWidth: 2}}
+            defaultValue=""
+            keyboardType="generic"
+            onChangeText={nombre => setNombre(nombre)}
+          />
+        </View>
+
+        <View style={{flexDirection: 'row', margin: 20}}>
+          <Text style={{fontSize: 35, color: 'brown'}}>Correo: </Text>
+          <TextInput
+            style={{borderWidth: 2, alignContent: 'center'}}
+            defaultValue=""
+            keyboardType="generic"
+            onChangeText={nombre => setNombre(nombre)}
+          />
+        </View>
+
+        <View style={{flexDirection: 'row', margin: 20}}>
+          <Text style={{fontSize: 35, color: 'brown'}}>Sexo: </Text>
+          <Switch
+            style={styles.switch}
+            trackColor={{false: 'skyblue', true: 'pink'}}
+            thumbColor={isEnabled ? 'pink' : 'skyblue'}
+            onValueChange={() => setIsEnabled(previousState => !previousState)}
+            value={isEnabled}
+          />
+        </View>
 
         <Button onPress={decirDatos} title={'ENVIAR'} />
         {texto}
@@ -103,11 +121,6 @@ const validateLetras = texto => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 50,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-  },
   texto: {
     fontSize: 20,
     fontWeight: 'bold',
