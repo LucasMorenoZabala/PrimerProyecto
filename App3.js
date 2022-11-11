@@ -19,6 +19,56 @@ export default function ApplicationForm() {
   const [correo, setCorreo] = useState(null);
   const [isEnabled, setIsEnabled] = useState(false);
   const [imagen, setImagen] = useState();
+  const [validanombre, setValidaNombre] = useState(false);
+    const [validaapellido, setValidaApellidos] = useState(false);
+    const [validedad, setValidaEdad] = useState(false);
+    const [validacorreo, setValidaCorreo] = useState(false);
+
+  function validateCorreo(correo) {
+    const reg = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,40})+$/ ;
+    if (reg.test(correo)) {
+        setValidaCorreo(true);
+        setCorreo(correo);
+    } else {
+        setValidaCorreo(false);
+      
+    }
+  }
+
+  
+function validateNombre(nombre) {
+  const reg = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
+  if (reg.test(nombre)) {
+      setValidaNombre(true);
+      setNombre(nombre)
+  } else {
+      setValidaNombre(false);
+  }
+}
+
+function validateApellidos(apellidos) {
+  const reg = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
+  if (reg.test(apellidos)) {
+      setValidaApellidos(true);
+      setApellidos(apellidos)
+  } else {
+      setValidaApellidos(false);
+    
+  }
+}
+
+function validateEdad(edad) {
+  const reg =  /^[0-9]+$/;
+  if (reg.test(edad)) {
+      setValidaEdad(true);
+      setEdad(edad);
+  } else {
+      setValidaEdad(false);
+    
+  }
+}
+
+
 
   const decirDatos = () => {
     setTexto(
@@ -40,7 +90,7 @@ export default function ApplicationForm() {
             style={{borderWidth: 2,minWidth:'50%'}}
             defaultValue=""
             keyboardType="generic"
-            onChangeText={nombre => setNombre(nombre)}
+            onChangeText={nombre => validateNombre(nombre)}
           />
         </View>
 
@@ -50,7 +100,7 @@ export default function ApplicationForm() {
             style={{borderWidth: 2,minWidth:'50%'}}
             defaultValue=""
             keyboardType="generic"
-            onChangeText={apellidos => setApellidos(apellidos)
+            onChangeText={apellidos => validateApellidos(apellidos)
             
             }
           />
@@ -62,7 +112,7 @@ export default function ApplicationForm() {
             style={{borderWidth: 2,minWidth:'50%'}}
             defaultValue=""
             keyboardType="generic"
-            onChangeText={edad => setEdad(edad)}
+            onChangeText={edad => validateEdad(edad)}
           />
         </View>
 
@@ -72,7 +122,7 @@ export default function ApplicationForm() {
             style={{borderWidth: 2, alignContent: 'center',minWidth:'50%'}}
             defaultValue=""
             keyboardType="generic"
-            onChangeText={correo => setCorreo(correo)}
+            onChangeText={correo => validateCorreo(correo)}
           />
         </View>
 
@@ -95,32 +145,9 @@ export default function ApplicationForm() {
   );
 }
 
-const validateEdad = texto => {
-  const reg = /^[0-9]+$/;
-  if (reg.test(texto)) {
-    console.log('Soy un número');
-  } else {
-    console.log('Soy una letra');
-  }
-};
 
-const validateCorreo = texto => {
-  const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (reg.test(texto)) {
-    console.log('Soy un número');
-  } else {
-    console.log('Soy una letra');
-  }
-};
 
-const validateLetras = texto => {
-  const reg = /^[a-zA-Z ]{2,40}$/;
-  if (reg.test(texto)) {
-    console.log('Soy un número');
-  } else {
-    console.log('Soy una letra');
-  }
-};
+
 
 const styles = StyleSheet.create({
   texto: {
@@ -131,7 +158,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textoInput:{
-    fontSize: 35, 
+    fontSize: 30, 
     color: 'brown',
     width:'50%'
   },
