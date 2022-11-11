@@ -8,6 +8,7 @@ import {
   Button,
   ScrollView,
   Image,
+  Alert,
 } from 'react-native';
 import img from './img/Cerdo-vietnamita-Animales-Faunia-5.jpg';
 
@@ -71,6 +72,8 @@ function validateEdad(edad) {
 
 
   const decirDatos = () => {
+    
+    if(nombre != '' && apellidos != '' && edad != '' && correo != '' && validaApellidos == true && validacorreo == true && validanombre == true && validedad == true){
     setTexto(
       <Text style={styles.texto}>
         Mi nombre es {nombre}, mis apellidos son {apellidos}, tengo {edad} años,
@@ -79,6 +82,9 @@ function validateEdad(edad) {
       </Text>,
     );
     setImagen(<Image style={{width: 500, height: 500}} source={img} />);
+  }else{
+      Alert.alert("Datos erróneos o datos en blanco.","Callado ya, datos erróneos o campos en blanco.")
+  }
   };
 
   return (
@@ -142,7 +148,7 @@ function validateEdad(edad) {
         </View>
 
         <View style={styles.recuadritos}>
-          <Text style={styles.textoInput}>Sexo: </Text>
+          <Text style={{fontSize:20,marginLeft:60}}> Hombre </Text>
           <Switch
             style={styles.switch}
             trackColor={{false: 'skyblue', true: 'pink'}}
@@ -150,6 +156,7 @@ function validateEdad(edad) {
             onValueChange={() => setIsEnabled(previousState => !previousState)}
             value={isEnabled}
           />
+          <Text style={{fontSize: 20}}> Mujer </Text>
         </View>
 
         <Button onPress={decirDatos} title={'ENVIAR'} />
@@ -160,10 +167,6 @@ function validateEdad(edad) {
   );
 }
 
-
-
-
-
 const styles = StyleSheet.create({
   texto: {
     fontSize: 20,
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textoInput:{
-    fontSize: 30, 
+    fontSize: 20, 
     color: '#663300',
     width:'40%',
   },
