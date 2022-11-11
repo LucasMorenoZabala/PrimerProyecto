@@ -14,7 +14,7 @@ import img from './img/Cerdo-vietnamita-Animales-Faunia-5.jpg';
 export default function ApplicationForm() {
   const [nombre, setNombre] = useState(null);
   const [apellidos, setApellidos] = useState(null);
-  const [edad, setEdad] = useState(0);
+  const [edad, setEdad] = useState(null);
   const [texto, setTexto] = useState(null);
   const [correo, setCorreo] = useState(null);
   const [isEnabled, setIsEnabled] = useState(false);
@@ -34,48 +34,50 @@ export default function ApplicationForm() {
   return (
     <ScrollView>
       <View>
-        <View style={{flexDirection: 'row', margin: 20}}>
-          <Text style={{fontSize: 35, color: 'brown'}}>Nombre: </Text>
+        <View style={styles.recuadritos}>
+          <Text style={styles.textoInput}>Nombre: </Text>
           <TextInput
-            style={{borderWidth: 2}}
+            style={{borderWidth: 2,minWidth:'50%'}}
             defaultValue=""
             keyboardType="generic"
             onChangeText={nombre => setNombre(nombre)}
           />
         </View>
 
-        <View style={{flexDirection: 'row', margin: 20}}>
-          <Text style={{fontSize: 35, color: 'brown'}}>Apellidos: </Text>
+        <View style={styles.recuadritos}>
+          <Text style={styles.textoInput}>Apellidos: </Text>
           <TextInput
-            style={{borderWidth: 2}}
+            style={{borderWidth: 2,minWidth:'50%'}}
             defaultValue=""
             keyboardType="generic"
-            onChangeText={nombre => setNombre(nombre)}
+            onChangeText={apellidos => setApellidos(apellidos)
+            
+            }
           />
         </View>
 
-        <View style={{flexDirection: 'row', margin: 20}}>
-          <Text style={{fontSize: 35, color: 'brown'}}>Edad: </Text>
+        <View style={styles.recuadritos}>
+          <Text style={styles.textoInput}>Edad: </Text>
           <TextInput
-            style={{borderWidth: 2}}
+            style={{borderWidth: 2,minWidth:'50%'}}
             defaultValue=""
             keyboardType="generic"
-            onChangeText={nombre => setNombre(nombre)}
+            onChangeText={edad => setEdad(edad)}
           />
         </View>
 
-        <View style={{flexDirection: 'row', margin: 20}}>
-          <Text style={{fontSize: 35, color: 'brown'}}>Correo: </Text>
+        <View style={styles.recuadritos}>
+          <Text style={styles.textoInput}>Correo: </Text>
           <TextInput
-            style={{borderWidth: 2, alignContent: 'center'}}
+            style={{borderWidth: 2, alignContent: 'center',minWidth:'50%'}}
             defaultValue=""
             keyboardType="generic"
-            onChangeText={nombre => setNombre(nombre)}
+            onChangeText={correo => setCorreo(correo)}
           />
         </View>
 
-        <View style={{flexDirection: 'row', margin: 20}}>
-          <Text style={{fontSize: 35, color: 'brown'}}>Sexo: </Text>
+        <View style={styles.recuadritos}>
+          <Text style={styles.textoInput}>Sexo: </Text>
           <Switch
             style={styles.switch}
             trackColor={{false: 'skyblue', true: 'pink'}}
@@ -126,6 +128,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   switch: {
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
+  textoInput:{
+    fontSize: 35, 
+    color: 'brown',
+    width:'50%'
+  },
+  recuadritos:{
+    flexDirection: 'row',
+     margin: 20
+  }
 });
