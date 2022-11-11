@@ -20,7 +20,7 @@ export default function ApplicationForm() {
   const [isEnabled, setIsEnabled] = useState(false);
   const [imagen, setImagen] = useState();
   const [validanombre, setValidaNombre] = useState(false);
-    const [validaapellido, setValidaApellidos] = useState(false);
+    const [validaApellidos, setValidaApellidos] = useState(false);
     const [validedad, setValidaEdad] = useState(false);
     const [validacorreo, setValidaCorreo] = useState(false);
 
@@ -83,11 +83,16 @@ function validateEdad(edad) {
 
   return (
     <ScrollView>
+      
       <View>
+        <Text style={{fontSize:40,marginLeft:90,color:'#000000'}}>Formulario</Text>
         <View style={styles.recuadritos}>
           <Text style={styles.textoInput}>Nombre: </Text>
           <TextInput
-            style={{borderWidth: 2,minWidth:'50%'}}
+            style={validanombre ? (
+              { borderWidth: 2, height: 40,width: 210, borderColor: 'green' }
+          ) : 
+              { borderWidth: 2, height: 40,width: 210, borderColor: 'red' }}
             defaultValue=""
             keyboardType="generic"
             onChangeText={nombre => validateNombre(nombre)}
@@ -97,7 +102,11 @@ function validateEdad(edad) {
         <View style={styles.recuadritos}>
           <Text style={styles.textoInput}>Apellidos: </Text>
           <TextInput
-            style={{borderWidth: 2,minWidth:'50%'}}
+            style={validaApellidos ? (
+              { borderWidth: 2, height: 40,width: 210, borderColor: 'green' }
+          ) : 
+              { borderWidth: 2, height: 40,width: 210, borderColor: 'red' }
+          }
             defaultValue=""
             keyboardType="generic"
             onChangeText={apellidos => validateApellidos(apellidos)
@@ -109,7 +118,10 @@ function validateEdad(edad) {
         <View style={styles.recuadritos}>
           <Text style={styles.textoInput}>Edad: </Text>
           <TextInput
-            style={{borderWidth: 2,minWidth:'50%'}}
+            style={validedad ? (
+              { borderWidth: 2, height: 40,width: 210, borderColor: 'green' }
+          ) : 
+              { borderWidth: 2, height: 40,width: 210, borderColor: 'red' }}
             defaultValue=""
             keyboardType="generic"
             onChangeText={edad => validateEdad(edad)}
@@ -119,7 +131,10 @@ function validateEdad(edad) {
         <View style={styles.recuadritos}>
           <Text style={styles.textoInput}>Correo: </Text>
           <TextInput
-            style={{borderWidth: 2, alignContent: 'center',minWidth:'50%'}}
+            style={validacorreo ? (
+              { borderWidth: 2, height: 40,width: 210, borderColor: 'green' }
+          ) : 
+              { borderWidth: 2, height: 40,width: 210, borderColor: 'red' }}
             defaultValue=""
             keyboardType="generic"
             onChangeText={correo => validateCorreo(correo)}
@@ -159,11 +174,11 @@ const styles = StyleSheet.create({
   },
   textoInput:{
     fontSize: 30, 
-    color: 'brown',
-    width:'50%'
+    color: '#663300',
+    width:'40%',
   },
   recuadritos:{
     flexDirection: 'row',
-     margin: 20
+     margin: 20,
   }
 });
