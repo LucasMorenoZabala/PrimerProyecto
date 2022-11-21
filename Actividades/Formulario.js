@@ -36,7 +36,6 @@ export default function ApplicationForm() {
     }
   }
 
-  
 function validateNombre(nombre) {
   const reg = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
   if (reg.test(nombre)) {
