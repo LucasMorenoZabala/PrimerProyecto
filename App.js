@@ -1,52 +1,55 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  FlatList
-} from 'react-native';
+import * as React from 'react';
+import { View, Text,Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"
-
-export default function App(){
-
-  const DATA = [
-
-    { name: 'Lucas',
+function HomeScreen({navigation,route}) {
+  const {userName} = route.params;
+  return (
     
-    surname: 'Moreno',
-    phone: 123456789,
-    icon:'rocket'
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Página principal</Text>
 
-    },
-    { name: 'Antonio',
-    
-    surname: 'Moreno',
-    phone: 123456786,
-    icon:'apple'
+      <Button onPress={() => navigation.navigate("Profile",{userName})} title={'Pasar Página'} />
+    </View>
 
-    },];
-
-
-
-
-
-  const printElement = ({item}) => {
-      return(
-
-        <View>
-            <Text>{item.name}, {item.surname}</Text> <Icon name={item.icon}></Icon>
-        </View>
-      )
-    }
-
-  return(
-        <FlatList
-          data={DATA}
-          renderItem = {printElement}
-        
-        />
-    )
-
+      
+  );
 }
+
+function ProfileScreen({route}) {
+  const {userName} = route.params;
+  
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Profile</Text>
+      <Text>{userName}</Text>
+      
+    </View>
+  );
+}
+
+
+
+
+
+const Stack = createNativeStackNavigator();
+
+
+function App() {
+  return (
+    <NavigationContainer initialRouteName="Profile">
+      <Stack.Navigator>
+        <Stack.Screen initialParams={{userName: "Lucas"}} name="Home" component={HomeScreen} options={{title:"Home", headerTitleAlign:'center'}} />
+        <Stack.Screen name="Profile" component={ProfileScreen} options={{title:"Profile", headerTitleAlign:'center'}} />
+      </Stack.Navigator>
+    
+
+    </NavigationContainer>
+  );
+}
+
+export default App;
 
 
