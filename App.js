@@ -1,73 +1,131 @@
 import * as React from 'react';
-import { Button, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {Button, Text, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-function DetailsScreen() {
+function HomeScreen({navigation}) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Details!</Text>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Button>
+        onPress=
+        {() =>
+          navigation.navigate('Perfil', {
+            userName: 'Lukasmz03',
+            Name: 'Lucas',
+            surName: 'Moreno',
+            age: '19',
+          })
+        }
+        <Text>Lucas</Text>
+      </Button>
+
+      <Button>
+        onPress=
+        {() =>
+          navigation.navigate('Perfil', {
+            userName: 'Ansepe',
+            Name: 'Andrés',
+            surName: 'Cabañas',
+            age: '20',
+          })
+        }
+        <Text>Andrés</Text>
+      </Button>
+
+      <Button>
+        onPress=
+        {() =>
+          navigation.navigate('Perfil', {
+            userName: 'Danimauri03',
+            Name: 'Daniel',
+            surName: 'Espinosa',
+            age: '19',
+          })
+        }
+        <Text>Daniel</Text>
+      </Button>
+
+      <Button>
+        onPress=
+        {() =>
+          navigation.navigate('Perfil', {
+            userName: 'Jorge1985',
+            Name: 'Jorge',
+            surName: 'Delgado',
+            age: '44',
+          })
+        }
+        <Text>Jorge</Text>
+      </Button>
     </View>
   );
 }
 
-function HomeScreen({ navigation }) {
+function PerfilScreen(route) {
+  const {userName, Name, surName, age} = route.params;
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>
+        {userName},{Name},{surName},{age}
+      </Text>
     </View>
   );
 }
 
-function SettingsScreen({ navigation }) {
+function SettingsScreen({}) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Settings screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
     </View>
   );
 }
 
-const HomeStack = createNativeStackNavigator();
-
-function HomeStackScreen() {
+function GrupoHome() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
-    </HomeStack.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{title: 'Lista de Contactos'}}
+      />
+
+      <Stack.Screen
+        name="Profile"
+        component={PerfilScreen}
+        options={{title: 'Datos de Contacto'}}
+      />
+    </Stack.Navigator>
   );
 }
 
-const SettingsStack = createNativeStackNavigator();
-
-function SettingsStackScreen() {
-  return (
-    <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-      <SettingsStack.Screen name="Details" component={DetailsScreen} />
-    </SettingsStack.Navigator>
-  );
-}
+const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Home" component={HomeStackScreen} />
-        <Tab.Screen name="Settings" component={SettingsStackScreen} />
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused ? 'Home' : 'Home-outline';
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'Bandage' : 'Bandage-outline';
+            }
+
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'green',
+          tabBarActiveTintColor: 'blue',
+        })}>
+        <Tab.Screen name="Home" component={GrupoHome} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
-
