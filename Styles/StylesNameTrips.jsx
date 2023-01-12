@@ -7,6 +7,11 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
 
     container: {
-        alignItems: 'center'
+        textAlign: 'center',
+        fontSize: 20,
+        fontStyle: 'italic',
+        fontWeight: 'bold'
     }
 });
+
+export default styles;

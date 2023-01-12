@@ -1,6 +1,7 @@
 
 import * as React from "react";
-import { Text,View,StyleSheet,FlatList,TouchableOpacity,Image, ScrollView } from "react-native";
+import { Text,View,FlatList,TouchableOpacity,Image, ScrollView } from "react-native";
+import StylesNameTrips from '../Styles/StylesNameTrips';
 import sevilla from '../img/sevilla.jpg';
 import lisboa from '../img/lisboa.jpg';
 import paris from '../img/paris.jpg';
@@ -68,7 +69,7 @@ function TripScreen({navigation}) {
     const printElement = ({item}) => {
       return (
         <ScrollView>
-          <Text>{item.nombre}</Text>
+          <Text style={StylesNameTrips.container}>{item.nombre}</Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('insideTrips', {item})}>
                <Image
