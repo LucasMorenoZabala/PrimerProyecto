@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import { StyleSheet } from "react-native";
 
 
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
 
     container: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 22,
         fontStyle: 'italic',
         fontWeight: 'bold'
     }
